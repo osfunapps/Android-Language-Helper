@@ -38,6 +38,11 @@ namespace Android_Language_Helper
                     xmlRequest.TranslatedAppDescription = stringObj.StringToTranslate;
                     continue;
                 }
+                else if (stringObj.Code.Equals(FilesCoordinator.APP_SUMMARY))
+                {
+                    xmlRequest.TranslatedAppSummary = stringObj.StringToTranslate;
+                    continue;
+                }
 
                 XmlElement stringNode = xmlDocument.CreateElement(TAG_STRING);
                 stringNode.SetAttribute(ATT_NAME, stringObj.Code);

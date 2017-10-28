@@ -29,64 +29,43 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.saveAsBtn = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.inputBrowseBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.outputPathTB = new System.Windows.Forms.TextBox();
             this.inputPathTB = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.translationTB = new System.Windows.Forms.TextBox();
-            this.appDescriptionTB = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.saveAsBtn = new System.Windows.Forms.Button();
+            this.outputPathTB = new System.Windows.Forms.TextBox();
+            this.appDetailsGB = new System.Windows.Forms.GroupBox();
+            this.appSummaryTB = new System.Windows.Forms.TextBox();
+            this.languageTB = new System.Windows.Forms.TextBox();
+            this.appDescriptionRTB = new System.Windows.Forms.RichTextBox();
             this.appNameTB = new System.Windows.Forms.TextBox();
             this.goBtn = new System.Windows.Forms.Button();
             this.logBtn = new System.Windows.Forms.LinkLabel();
             this.inputPathDialog = new System.Windows.Forms.OpenFileDialog();
             this.outputFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.saveGB = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.appDetailsGB.SuspendLayout();
+            this.saveGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.saveAsBtn);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.inputBrowseBtn);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.outputPathTB);
             this.groupBox1.Controls.Add(this.inputPathTB);
-            this.groupBox1.Location = new System.Drawing.Point(18, 12);
+            this.groupBox1.Location = new System.Drawing.Point(19, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(497, 232);
+            this.groupBox1.Size = new System.Drawing.Size(497, 139);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Create Xml/Xlsx file";
-            // 
-            // saveAsBtn
-            // 
-            this.saveAsBtn.Location = new System.Drawing.Point(222, 175);
-            this.saveAsBtn.Name = "saveAsBtn";
-            this.saveAsBtn.Size = new System.Drawing.Size(75, 33);
-            this.saveAsBtn.TabIndex = 11;
-            this.saveAsBtn.Text = "Save as...";
-            this.saveAsBtn.UseVisualStyleBackColor = true;
-            this.saveAsBtn.Click += new System.EventHandler(this.saveAsBtn_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 143);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Output file path";
+            this.groupBox1.Text = "Load";
             // 
             // inputBrowseBtn
             // 
-            this.inputBrowseBtn.Location = new System.Drawing.Point(222, 76);
+            this.inputBrowseBtn.Location = new System.Drawing.Point(203, 91);
             this.inputBrowseBtn.Name = "inputBrowseBtn";
             this.inputBrowseBtn.Size = new System.Drawing.Size(75, 33);
             this.inputBrowseBtn.TabIndex = 7;
@@ -97,24 +76,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 43);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(155, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(189, 20);
             this.label1.TabIndex = 8;
-            this.label1.Text = "XML/XLSX file path";
-            // 
-            // outputPathTB
-            // 
-            this.outputPathTB.AllowDrop = true;
-            this.outputPathTB.Location = new System.Drawing.Point(145, 140);
-            this.outputPathTB.Name = "outputPathTB";
-            this.outputPathTB.Size = new System.Drawing.Size(266, 20);
-            this.outputPathTB.TabIndex = 3;
+            this.label1.Text = "Load Excel/strings.xml file";
             // 
             // inputPathTB
             // 
             this.inputPathTB.AllowDrop = true;
-            this.inputPathTB.Location = new System.Drawing.Point(145, 40);
+            this.inputPathTB.Location = new System.Drawing.Point(113, 57);
             this.inputPathTB.Name = "inputPathTB";
             this.inputPathTB.Size = new System.Drawing.Size(266, 20);
             this.inputPathTB.TabIndex = 7;
@@ -122,79 +94,89 @@
             this.inputPathTB.DragDrop += new System.Windows.Forms.DragEventHandler(this.InputFileDropHandler);
             this.inputPathTB.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnterHandler);
             // 
-            // groupBox3
+            // saveAsBtn
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.translationTB);
-            this.groupBox3.Controls.Add(this.appDescriptionTB);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.appNameTB);
-            this.groupBox3.Location = new System.Drawing.Point(18, 249);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(497, 303);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "App Details";
+            this.saveAsBtn.Location = new System.Drawing.Point(199, 79);
+            this.saveAsBtn.Name = "saveAsBtn";
+            this.saveAsBtn.Size = new System.Drawing.Size(75, 33);
+            this.saveAsBtn.TabIndex = 11;
+            this.saveAsBtn.Text = "Save as...";
+            this.saveAsBtn.UseVisualStyleBackColor = true;
+            this.saveAsBtn.Click += new System.EventHandler(this.saveAsBtn_Click);
             // 
-            // label3
+            // outputPathTB
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(101, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Translation Language";
+            this.outputPathTB.AllowDrop = true;
+            this.outputPathTB.Location = new System.Drawing.Point(109, 47);
+            this.outputPathTB.Name = "outputPathTB";
+            this.outputPathTB.Size = new System.Drawing.Size(266, 20);
+            this.outputPathTB.TabIndex = 3;
             // 
-            // translationTB
+            // appDetailsGB
             // 
-            this.translationTB.AllowDrop = true;
-            this.translationTB.Location = new System.Drawing.Point(222, 33);
-            this.translationTB.Name = "translationTB";
-            this.translationTB.Size = new System.Drawing.Size(75, 20);
-            this.translationTB.TabIndex = 13;
+            this.appDetailsGB.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.appDetailsGB.Controls.Add(this.appSummaryTB);
+            this.appDetailsGB.Controls.Add(this.languageTB);
+            this.appDetailsGB.Controls.Add(this.appDescriptionRTB);
+            this.appDetailsGB.Controls.Add(this.appNameTB);
+            this.appDetailsGB.Location = new System.Drawing.Point(23, 284);
+            this.appDetailsGB.Name = "appDetailsGB";
+            this.appDetailsGB.Size = new System.Drawing.Size(497, 334);
+            this.appDetailsGB.TabIndex = 2;
+            this.appDetailsGB.TabStop = false;
+            this.appDetailsGB.Text = "App Details";
             // 
-            // appDescriptionTB
+            // appSummaryTB
             // 
-            this.appDescriptionTB.Location = new System.Drawing.Point(104, 121);
-            this.appDescriptionTB.Name = "appDescriptionTB";
-            this.appDescriptionTB.Size = new System.Drawing.Size(307, 154);
-            this.appDescriptionTB.TabIndex = 12;
-            this.appDescriptionTB.Text = "";
+            this.appSummaryTB.AllowDrop = true;
+            this.appSummaryTB.Location = new System.Drawing.Point(104, 82);
+            this.appSummaryTB.Multiline = true;
+            this.appSummaryTB.Name = "appSummaryTB";
+            this.appSummaryTB.Size = new System.Drawing.Size(193, 33);
+            this.appSummaryTB.TabIndex = 15;
+            this.appSummaryTB.Tag = "App Summary";
             // 
-            // label6
+            // languageTB
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(207, 83);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 16);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "App Description";
+            this.languageTB.AllowDrop = true;
+            this.languageTB.Location = new System.Drawing.Point(137, 17);
+            this.languageTB.Name = "languageTB";
+            this.languageTB.Size = new System.Drawing.Size(203, 20);
+            this.languageTB.TabIndex = 13;
+            this.languageTB.Tag = "Translation Language";
+            // 
+            // appDescriptionRTB
+            // 
+            this.appDescriptionRTB.Location = new System.Drawing.Point(104, 129);
+            this.appDescriptionRTB.Name = "appDescriptionRTB";
+            this.appDescriptionRTB.Size = new System.Drawing.Size(307, 189);
+            this.appDescriptionRTB.TabIndex = 12;
+            this.appDescriptionRTB.Tag = "App Description...";
+            this.appDescriptionRTB.Text = "";
             // 
             // appNameTB
             // 
             this.appNameTB.AllowDrop = true;
-            this.appNameTB.Location = new System.Drawing.Point(104, 87);
+            this.appNameTB.Location = new System.Drawing.Point(104, 52);
             this.appNameTB.Name = "appNameTB";
-            this.appNameTB.Size = new System.Drawing.Size(75, 20);
+            this.appNameTB.Size = new System.Drawing.Size(126, 20);
             this.appNameTB.TabIndex = 9;
-            this.appNameTB.Text = "AppName";
+            this.appNameTB.Tag = "App Name";
             // 
             // goBtn
             // 
-            this.goBtn.Location = new System.Drawing.Point(222, 565);
+            this.goBtn.Location = new System.Drawing.Point(222, 624);
             this.goBtn.Name = "goBtn";
             this.goBtn.Size = new System.Drawing.Size(102, 43);
             this.goBtn.TabIndex = 11;
             this.goBtn.Text = "Go";
             this.goBtn.UseVisualStyleBackColor = true;
-            this.goBtn.Click += new System.EventHandler(this.goBtn_Click);
+            this.goBtn.Click += new System.EventHandler(this.GoBtn_Click);
             // 
             // logBtn
             // 
             this.logBtn.AutoSize = true;
-            this.logBtn.Location = new System.Drawing.Point(486, 595);
+            this.logBtn.Location = new System.Drawing.Point(486, 654);
             this.logBtn.Name = "logBtn";
             this.logBtn.Size = new System.Drawing.Size(29, 13);
             this.logBtn.TabIndex = 18;
@@ -207,22 +189,48 @@
             this.inputPathDialog.FileName = "inputPathDialog";
             this.inputPathDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // saveGB
+            // 
+            this.saveGB.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.saveGB.Controls.Add(this.label2);
+            this.saveGB.Controls.Add(this.saveAsBtn);
+            this.saveGB.Controls.Add(this.outputPathTB);
+            this.saveGB.Location = new System.Drawing.Point(23, 157);
+            this.saveGB.Name = "saveGB";
+            this.saveGB.Size = new System.Drawing.Size(497, 121);
+            this.saveGB.TabIndex = 9;
+            this.saveGB.TabStop = false;
+            this.saveGB.Text = "Save";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(184, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Save output in";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(532, 621);
+            this.ClientSize = new System.Drawing.Size(532, 679);
+            this.Controls.Add(this.saveGB);
             this.Controls.Add(this.logBtn);
             this.Controls.Add(this.goBtn);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.appDetailsGB);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Android Strings Helper";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.appDetailsGB.ResumeLayout(false);
+            this.appDetailsGB.PerformLayout();
+            this.saveGB.ResumeLayout(false);
+            this.saveGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,20 +242,19 @@
         private System.Windows.Forms.Button inputBrowseBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox inputPathTB;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox appDetailsGB;
         private System.Windows.Forms.TextBox appNameTB;
-        private System.Windows.Forms.RichTextBox appDescriptionTB;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RichTextBox appDescriptionRTB;
         private System.Windows.Forms.Button goBtn;
         private System.Windows.Forms.LinkLabel logBtn;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox outputPathTB;
         private System.Windows.Forms.Button saveAsBtn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox translationTB;
+        private System.Windows.Forms.TextBox languageTB;
         private System.Windows.Forms.OpenFileDialog inputPathDialog;
         private System.Windows.Forms.FolderBrowserDialog outputFolderDialog;
-
+        private System.Windows.Forms.GroupBox saveGB;
+        private System.Windows.Forms.TextBox appSummaryTB;
+        private System.Windows.Forms.Label label2;
     }
 }
 

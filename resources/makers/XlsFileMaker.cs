@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Android_Language_Helper.resources.makers;
@@ -40,7 +41,7 @@ namespace Android_Language_Helper.resources.excel
         {
 
             var cells = sheet[3, 0, 3 + (rows), 2];
-                
+
             for (int i = 0; i < rows; i++)
             {
                 //wrap text
@@ -55,11 +56,20 @@ namespace Android_Language_Helper.resources.excel
 
                 cells[i, 5].Value = stringsObjList[i].Code;
                 cells[i, 1].Value = stringsObjList[i].StringToTranslate;
-                if (stringsObjList[i].Code.Equals(FilesCoordinator.APP_NAME)) { 
+                if (stringsObjList[i].Code.Equals(FilesCoordinator.APP_NAME))
+                {
                     cells[i, 0].Value = "This is the app name";
                     cells[i, 0].Style.Font.Bold = true;
                 }
-                else if (stringsObjList[i].Code.Equals(FilesCoordinator.APP_DESCRIPTION)){
+                if (stringsObjList[i].Code.Equals(FilesCoordinator.APP_SUMMARY))
+                {
+                    cells[i, 0].Value = "This is the app summary";
+                    cells[i, 0].Style.Font.Bold = true;
+                }
+
+
+                else if (stringsObjList[i].Code.Equals(FilesCoordinator.APP_DESCRIPTION))
+                {
                     cells[i, 0].Value = "This is the app description";
                     cells[i, 0].Style.Font.Bold = true;
                 }

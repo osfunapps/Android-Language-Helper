@@ -8,7 +8,13 @@ namespace Android_Language_Helper.resources.requests
 {
     public class XlsxRequest : Request
     {
-        private string appName, appDescription;
+        private string appName, appDescription, appSummary;
+
+        public string AppSummary
+        {
+            get => appSummary;
+            set => appSummary = value;
+        }
 
         public string AppName
         {

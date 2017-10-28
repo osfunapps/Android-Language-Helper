@@ -22,6 +22,7 @@ namespace Android_Language_Helper.resources.requests
         public string TranslatedAppName { get; set; }
         public string TranslatedAppDescription { get; set; }
         public string Translation { get; set; }
+        public string TranslatedAppSummary { get; set; }
     }
 
 

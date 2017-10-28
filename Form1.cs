@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Android_Language_Helper.resources.makers;
 using Android_Language_Helper.resources.requests;
 using LayoutProject;
+using Remotes_App_Translation_Project.tools;
 
 namespace Android_Language_Helper
 {
@@ -18,10 +19,19 @@ namespace Android_Language_Helper
         private string FILE_MADE = "file made!";
         private static string inputExtension;
         private bool isExcelInput;
+        private bool xmlInput;
+        private HintsCreator hintsCreator;
 
         public Form1()
         {
             InitializeComponent();
+            DisableFields();
+        }
+
+        private void DisableFields()
+        {
+            appDetailsGB.Enabled = false;
+            saveGB.Enabled = false;
         }
 
 
@@ -62,23 +72,17 @@ namespace Android_Language_Helper
         private void inputXML()
         {
             isExcelInput = false;
-            enableFields(true);
+            xmlInput = true;
         }
 
         private void inputExcel()
         {
             isExcelInput = true;
-            enableFields(false);
+            appDetailsGB.Enabled = false;
         }
 
-        private void enableFields(bool enable)
-        {
-            appDescriptionTB.Enabled = enable;
-            appNameTB.Enabled = enable;
-            translationTB.Enabled = enable;
-        }
 
-        private void goBtn_Click(object sender, EventArgs e)
+        private void GoBtn_Click(object sender, EventArgs e)
         {
             //todo: so far, not yelling if ALL fields not empty!
             if (inputPathTB.Text.Equals(""))
@@ -86,7 +90,7 @@ namespace Android_Language_Helper
                 MessageBox.Show(ErrorBank.SELECT_A_FILE);
                 return;
             }
-            else if (!isExcelInput && translationTB.Text.Equals(""))
+            else if (!isExcelInput && languageTB.Text.Equals(""))
             {
                 MessageBox.Show(ErrorBank.SELECT_A_LANGUAGE);
                 return;
@@ -106,11 +110,11 @@ namespace Android_Language_Helper
 
             else
             {
-                //tood if appname kept blank
                 XlsxRequest xlsxRequest = new XlsxRequest(inputPathTB.Text, outputPathTB.Text);
-                xlsxRequest.Language = translationTB.Text;
+                xlsxRequest.Language = languageTB.Text;
+                xlsxRequest.AppSummary = appSummaryTB.Text;
                 xlsxRequest.AppName = appNameTB.Text;
-                xlsxRequest.AppDescription = appDescriptionTB.Text;
+                xlsxRequest.AppDescription = appDescriptionRTB.Text;
                 filesCoordinator.coordinateFiles(xlsxRequest);
             }
         }
@@ -118,6 +122,7 @@ namespace Android_Language_Helper
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
             inputPathTB.Text = TitleExporter(sender.ToString());
+            saveGB.Enabled = true;
         }
 
         private string TitleExporter(string fileLongStr)
@@ -152,10 +157,31 @@ namespace Android_Language_Helper
             {
                 outputPathTB.Text = saveFileDialog.FileName;
             }
+
+            if (xmlInput) { 
+                appDetailsGB.Enabled = true;
+                setHints();
+            }
         }
 
+        private void setHints()
+        {
+            hintsCreator = new HintsCreator();
+            appNameTB.Enter += hintsCreator.OnTBHint_Enter;
+            appNameTB.Leave += hintsCreator.OnTBHint_Leave;
+            hintsCreator.OnTBHint_Leave(appNameTB, null);
+            appSummaryTB.Enter += hintsCreator.OnTBHint_Enter;
+            appSummaryTB.Leave += hintsCreator.OnTBHint_Leave;
+            hintsCreator.OnTBHint_Leave(appSummaryTB, null);
+            languageTB.Enter += hintsCreator.OnTBHint_Enter;
+            languageTB.Leave += hintsCreator.OnTBHint_Leave;
+            hintsCreator.OnTBHint_Leave(languageTB, null);
 
+            appDescriptionRTB.Enter += hintsCreator.OnRTBHint_Enter;
+            appDescriptionRTB.Leave += hintsCreator.OnRTBHint_Leave;
+            hintsCreator.OnRTBHint_Leave(appDescriptionRTB, null);
 
+        }
 
         public void onXlsxFileMade()
         {
@@ -165,9 +191,10 @@ namespace Android_Language_Helper
         public void onXmlFileMade(XmlRequest xmlRequest)
         {
             appNameTB.Text = xmlRequest.TranslatedAppName;
-            appDescriptionTB.Text = xmlRequest.TranslatedAppDescription;
-            translationTB.Text = xmlRequest.Translation;
-            enableFields(true);
+            appDescriptionRTB.Text = xmlRequest.TranslatedAppDescription;
+            appSummaryTB.Text = xmlRequest.TranslatedAppSummary;
+            languageTB.Text = xmlRequest.Translation;
+            appDetailsGB.Enabled = true;
         }
 
         private void logBtn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -175,5 +202,6 @@ namespace Android_Language_Helper
             MessageBox.Show(Logger.GetTxt());
 
         }
+
     }
 }

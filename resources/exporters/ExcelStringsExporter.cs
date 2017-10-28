@@ -31,7 +31,8 @@ namespace Android_Language_Helper
 
             for (int i = 0; i < rows; i++)
             {
-                if (translatedCells[i].Value == null) break;
+                
+                if (translatedCells[i].Value == null)continue;
                 StringObj stringObj = new StringObj(translatedCells[i].Value.ToString(), programCells[i].Value.ToString());
                 stringObjList.Add(stringObj);
             }

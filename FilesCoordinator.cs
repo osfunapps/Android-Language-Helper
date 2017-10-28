@@ -12,6 +12,7 @@ namespace Android_Language_Helper
 
         public static string APP_NAME = "App Name";
         public static string APP_DESCRIPTION = "App Description";
+        public static string APP_SUMMARY = "App Summary";
         private string FILE_MADE = "file made!";
         private FileMadeCallback callback;
 
@@ -35,6 +36,7 @@ namespace Android_Language_Helper
 
             stringsToTranslate.Add(new StringObj(xlsxObject.AppDescription, APP_DESCRIPTION));
             stringsToTranslate.Insert(0, new StringObj(xlsxObject.AppName, APP_NAME));
+            stringsToTranslate.Insert(1, new StringObj(xlsxObject.AppSummary, APP_SUMMARY));
             xlsFileMaker.makeXlsFile(xlsxObject.Language, stringsToTranslate, xlsxObject.OutputPath);
         }
 
