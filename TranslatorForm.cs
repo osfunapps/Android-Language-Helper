@@ -14,7 +14,7 @@ using Remotes_App_Translation_Project.tools;
 
 namespace Android_Language_Helper
 {
-    public partial class Form1 : Form, FileMadeCallback
+    public partial class TranslatorForm : Form, FileMadeCallback
     {
         private string FILE_MADE = "file made!";
         private static string inputExtension;
@@ -22,7 +22,7 @@ namespace Android_Language_Helper
         private bool xmlInput;
         private HintsCreator hintsCreator;
 
-        public Form1()
+        public TranslatorForm()
         {
             InitializeComponent();
             DisableFields();

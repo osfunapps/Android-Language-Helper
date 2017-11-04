@@ -1,6 +1,6 @@
 ﻿namespace Android_Language_Helper
 {
-    partial class Form1
+    partial class TranslatorForm
     {
         /// <summary>
         /// Required designer variable.
